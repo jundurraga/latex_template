@@ -1,0 +1,42 @@
+%  CONFIGURE NEW SINGLE-PAGE FORMAT 
+\onecolumn % go back to one column
+\fancyhead{} % make sure we get no headers
+\renewcommand{\floatpagefraction}{0.1}
+\lfoot[\bSupInf]{\dAuthor}
+\rfoot[\dAuthor]{\cSupInf}
+\newpage
+
+\captionsetup*{format=largeformat} % make figure legend slightly larger than in the paper
+%\setcounter{figure}{0} % reset figure counter for Supplementary Video Figures
+%\setcounter{page}{1} % reset page count
+%\makeatletter 
+%\renewcommand{\thefigure}{SV\@arabic\c@figure} % make Figure legend start with Figure S
+%\makeatother
+
+%  MAIN TEXT 
+\newpage
+%\section*{}
+%\phantomsection\label{sup:videos}
+%\addcontentsline{toc}{section}{Supplementary Videos}
+
+%\subsection*{Sources time course of ITD-FR and ASSR}
+\phantomsection\label{sup:source_time}
+\addcontentsline{toc}{subsection}{Sources time course of ITD-FR and ASSR}
+
+\begin{supvideo}
+% \renewcommand\figurename{Video}
+\begin{minipage}{0.5\linewidth}
+	\centering
+	\begin{minipage}{.3\linewidth}
+		\centering
+		%\textattachfile[color=0 0 0]{./figures/Video_S1.mp4}{\textbf{Video SV1}}
+	\end{minipage}\\%
+ \end{minipage}
+%
+	\caption{
+	\textbf{\color{Black}Vides.}
+	\textbf{A}, My A video
+	}
+	\label{sv:sup_video_1}  
+\end{supvideo}
+

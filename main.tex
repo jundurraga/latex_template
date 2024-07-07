@@ -1,0 +1,125 @@
+\input{documentPreamble}
+\input{bibPreamble}
+\input{refPreamble}
+\input{acronyms}
+\newcommand\wordcount{\input{|"texcount -inc -sum -0 -template={SUM} \jobname.tex"}}
+%TC:macro \cite [option:ignore,ignore]
+\begin{document}
+%TC:ignore
+\leadauthor{The Lead Author name}
+\title{My very cool paper}
+\shorttitle{Cool paper}
+
+\author[1, 2]{Author 1 \orcidlink{0000-0000-0000-0000}}
+\author[1, 3]{Author 2 \orcidlink{0000-0000-0000-0001}}
+\affil[1]{My Department, 0 Street Name, Best University in the world, Postal code, Australia}
+\affil[2]{My Department 2, 0 Street Name 2, Almost Best University in the world, Postal code, Australia}
+\affil[3]{My Department 3, 0 Street Name 3, Not the Best University in the world, Postal code, Australia}
+
+
+\date{}
+\maketitle
+%TC:endignore
+
+%TC:ignore
+\begin{leadcontact}
+author1@myuni.org (A1) % author email and initials
+\end{leadcontact}
+
+\begin{corrauthor}
+author1@myuni.org (A1), author2@myuni.org (A2)
+\end{corrauthor}
+
+%TC:endignore
+
+%TC:ignore
+\begin{abstract}
+ \input{abstract}
+\end{abstract}
+%TC:endignore
+
+%TC:ignore
+\begin{keywords}
+Key word 1 | Key word 2 | Key word 3 
+\end{keywords}
+%TC:endignore
+
+%TC:ignore
+\phantomsection\label{sec:title}
+\addcontentsline{toc}{chapter}{My very cool paper}
+%TC:endignore
+\newrefsection
+\input{introduction.tex}
+\input{methods.tex}
+\input{results.tex}
+\input{discussion.tex}
+
+%TC:ignore
+%This document has \wordcount words.
+%TC:endignore
+
+%TC:ignore
+\input{acknowledgments.tex}
+\input{contributions.tex}
+\input{declaration.tex}
+
+% \newpage
+% \phantomsection\label{sup:Main figure legends}
+% \addcontentsline{toc}{section}{Main figure legends}
+% {%
+% \let\oldnumberline\numberline%
+% \renewcommand{\numberline}{\textbf\myfigurename~\oldnumberline}%
+% \vspace*{-3cm}
+% \listoffigures%
+% }
+
+
+% \newpage
+% \subsection*{}
+% \phantomsection\label{sup:Supplementary video legends}
+% \addcontentsline{toc}{section}{Supplementary video legends}
+% {%
+% \let\oldnumberline\numberline%
+% \renewcommand{\numberline}{\textbf\supvideoname~\oldnumberline}%
+% \listofsupvideos
+% }
+
+
+\newpage
+\subsection*{References}
+\printbibliography[heading=none]
+\endrefsection
+
+
+\newpage
+
+\newrefsection
+\defbibenvironment{supbibliography}
+  {\list
+     {\printtext[labelnumberwidth]{%
+        \printfield{prefixnumber}%
+        \printfield{labelnumber}}}
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{\hss##1}}
+  {\endlist}
+  {\item}
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
+
+\newpage
+\input{supplementary.tex}
+
+\newpage
+\newrefcontext[labelprefix=S]
+\printbibliography[env=supbibliography]
+\endrefsection
+
+\newpage
+\input{supplementary_videos.tex}
+%TC:endignore
+
+\end{document}

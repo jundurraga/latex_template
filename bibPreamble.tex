@@ -1,0 +1,52 @@
+%!TEX root = manuscript.tex
+\ExecuteBibliographyOptions{
+  , backref=false
+  , abbreviate=true
+  , uniquename=false % this make Hoffman M and Hoffman Michael the same author
+  , giveninits=true
+  , terseinits=false % this remove the period in abbreviated first names
+  , maxcitenames = 2
+  , uniquelist=false
+  , maxbibnames = 99
+  , minbibnames = 3
+  , doi=false
+  , isbn=false
+  , eprint=false
+  , sortcites = false
+  , autocite = superscript
+  , sorting = none
+  , url=true
+  , sortlocale=de_DE
+  , date=year
+  , useprefix=true%this fix dutch names
+  , hyperref=auto
+  , defernumbers=true
+}
+
+\DeclareNameAlias{sortname}{family-given}
+
+\AtEveryBibitem{%
+	\clearfield{note}%
+	\clearfield{url}%
+	\clearfield{urldate}
+	\clearfield{urlyear}%
+    \clearfield{urlmonth}%
+    %\clearfield{pages}%
+    %\clearfield{volume}%
+    \clearfield{number}%
+    \clearfield{note}%
+    \clearfield{month}%
+    \clearfield{day}%
+    % \clearfield{title}%
+}
+\AtEveryBibitem{\clearlist{language}}
+
+\defbibenvironment{bibliography}
+  {\begin{enumerate}}
+  {\end{enumerate}}
+  {\item}
+
+\addbibresource{./library.bib}
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+%\AtNextBibliography{\verysmall}

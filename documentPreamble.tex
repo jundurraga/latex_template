@@ -1,0 +1,124 @@
+\documentclass[tmptwocolumn]{bioRxiv}
+\usepackage{authblk}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}%coding of the font
+\usepackage{times}
+\usepackage{bm}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = * }
+\usepackage{lmodern,booktabs,graphicx,siunitx,paralist,multirow}
+\newcommand{\SIadj}[2]{\SI[number-unit-product={\text{-}}]{#1}{#2}}
+\usepackage[labelfont=bf]{caption}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{subfig}
+\usepackage{MnSymbol,bbding,pifont}
+\usepackage{bookmark}
+\hypersetup{
+    pdftitle={You can find this title in documentPreamble.tex},
+    pdfauthor={First Author et al.},
+    pdfsubject={Title of article},
+    pdfkeywords={Key word 1, Key word 2, Key word 3},
+    bookmarksnumbered=true,     
+    bookmarksopen=true,         
+    bookmarksopenlevel=5,       
+    %colorlinks=true,       
+    pdfstartview=Fit,           
+    pdfpagemode=UseOutlines,    % this is the option you were lookin for
+    pdfpagelayout=TwoPageRight
+}
+
+\usepackage[acronym,shortcuts=ac, nomain]{glossaries-extra}
+\glsdisablehyper
+
+% \usepackage[nolists,tablesfirst]{endfloat}
+
+\usepackage{csquotes}
+\usepackage{textcomp}
+\usepackage{attachfile}
+\usepackage[export]{adjustbox}
+\usepackage[figure,table]{totalcount}
+% \setlength{\parindent}{0in}
+\graphicspath{{./figures/}}
+% \DeclareGraphicsExtensions{.pdf}
+\DeclareUnicodeCharacter{03C0}{$\pi$}
+
+\input{bibPreamble}
+\addbibresource{library.bib}
+\renewcommand*{\thesection}{\arabic{section}}
+\renewcommand*{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand*{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+\let\subsectionautorefname\sectionautorefname
+\let\subsubsectionautorefname\sectionautorefname
+\usepackage{cleveref}
+% \renewcommand{\autoref}[1]{\cref{#1}}
+% \renewcommand{\Autoref}[1]{\Cref{#1}}
+% \Autoref is for the beginning of the sentence
+\let\orgautoref\autoref
+\providecommand{\Autoref}[1]{%
+\def\equationautorefname{Equation}%
+\def\tableautorefname{Table}%
+% \def\chapterautorefname{Chapter}%
+%\def\figureautorefname{Figure}%
+% \def\subfigureautorefname{Figure}%
+% \def\sectionautorefname{Section}%
+% \def\subsectionautorefname{Section}%
+\orgautoref{#1}}
+% \autoref is used inside the sentence to produce Fig., and Eq. for figures, subfigures, and equations
+\renewcommand{\autoref}[1]{%
+\def\equationautorefname{Eq.}%
+%\def\figureautorefname{Figure}%
+%\def\subfigureautorefname{Figure}%
+% \def\sectionautorefname{Sec.}%
+% \def\subsectionautorefname{Sec.}%
+% \def\subsubsectionautorefname{Sec.}%
+\orgautoref{#1}}
+\usepackage{makecell}
+% \renewcommand{\cite}[1]{\supercite{#1}}
+% \renewcommand{\citep}[1]{\supercite{#1}}
+
+%%%%%%%%%%%%%%%% list of figures
+%\addto\captionsenglish{%
+  %\renewcommand\listfigurename{}}
+% \renewcommand{\cftfigdotsep}{\cftnodots} % no dots
+% \renewcommand{\cftdotsep}{\cftnodots}
+
+\cftpagenumbersoff{chapter}
+\cftpagenumbersoff{section}
+\cftpagenumbersoff{subsection}
+\cftpagenumbersoff{subsubsection}
+\cftpagenumbersoff{figure} % no page numbers
+\setlength{\cftfigindent}{0.5em}
+\setlength{\cftfignumwidth}{1.5em} 
+
+%\makeatletter
+%\renewcommand{\fnum@figure}[1]{\figurename\ \thefigure} % remove the : after number
+%\renewcommand{\fnum@figure}[1]{\thefigure} % remove the : after number
+%\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{newfloat}
+
+\DeclareFloatingEnvironment[%
+        name={Figure}, %
+        placement=H, %
+        listname={Main figure legends}%
+    ]{myfigure}
+\renewcommand{\thefigure}{\arabic{figure}}
+
+\DeclareFloatingEnvironment[%
+        name={Figure}, %
+        placement=H, %
+        listname={}%
+    ]{supfigure}
+
+\renewcommand{\thesupfigure}{S\arabic{supfigure}}
+
+\DeclareFloatingEnvironment[
+        name={Video}, %
+        placement=H, %
+        listname={Supplementary video legends}%
+    ]{supvideo}
+\renewcommand{\thesupvideo}{S\arabic{supvideo}}
