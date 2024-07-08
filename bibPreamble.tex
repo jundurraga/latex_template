@@ -1,4 +1,19 @@
-%!TEX root = manuscript.tex
+%% citation style numeric
+% \usepackage[
+%         citestyle=numeric-comp
+%       , backend=biber
+%       , %, style=nature 
+%       , bibstyle=authoryear,
+%       , natbib=true]{biblatex}
+
+%% citation style author year
+\usepackage[
+        citestyle=authoryear
+      , backend=biber
+      , %, style=nature 
+      , bibstyle=authoryear,
+      , natbib=true]{biblatex}
+
 \ExecuteBibliographyOptions{
   , backref=false
   , abbreviate=true
@@ -50,3 +65,10 @@
 \renewbibmacro{in:}{%
   \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
 %\AtNextBibliography{\verysmall}
+
+% @submit is from bioRxiv.cls
+\if@submit
+  \renewcommand\bibfont{\normalfont\sffamily\fontsize{9}{10}\selectfont} % set font to be sans serif
+\else
+  \renewcommand\bibfont{\normalfont\sffamily\fontsize{6}{8}\selectfont} % set font to be sans serif
+\fi
